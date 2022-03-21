@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+_reposync()
+{
+	/bin/reposync --gpgcheck -d -t --downloadcomps --download-metadata --norepopath $@
+	return $?
+}
+
+BASEDIR=/data/software
+
+_reposync --repoid=upstream-ol8_baseos_latest --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/baseos/latest/x86_64
+_reposync --repoid=upstream-ol8_appstream --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/appstream/x86_64
+_reposync --repoid=upstream-ol8_addons --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/addons/x86_64
+
+_reposync --repoid=upstream-ol8_oraclelinuxmanager210_client --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/oraclelinuxmanager210/client/x86_64
+
+_reposync --repoid=upstream-ol8_developer --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/developer/x86_64
+_reposync --repoid=upstream-ol8_developer_EPEL --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/developer/EPEL/x86_64
+
+_reposync --repoid=upstream-ol8_UEKR6 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR6/x86_64
+_reposync --repoid=upstream-ol8_UEKR6_RDMA --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR6/RDMA/x86_64
+
+_reposync --repoid=upstream-ol8_kvm_appstream --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/kvm/appstream/x86_64
+
+_reposync --repoid=upstream-ol8_automation_manager --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/automation/x86_64
+
+_reposync --repoid=upstream-ol8_codeready_builder --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/codeready/builder/x86_64

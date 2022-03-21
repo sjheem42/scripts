@@ -1,0 +1,67 @@
+#!/bin/bash
+
+if [ -f comps.xml ]; then
+	createrepo_c -g comps.xml $* $PWD
+else
+	createrepo_c $* $PWD
+fi
+rc=$?
+if [ $rc -ne 0 ]; then
+	echo "createrepo_c failed [EC=$rc]"
+	exit $rc
+fi
+
+UPDATEINFO="$(/bin/ls -1rt *updateinfo.xml.gz 2>/dev/null | tail -1)"
+MODULES="$(/bin/ls -1rt *modules.yaml.gz 2>/dev/null | tail -1)"
+
+if [ -n "${UPDATEINFO}" ]; then
+	gunzip -c ${UPDATEINFO} >updateinfo.xml
+	rc=$?
+	if [ -f updateinfo.xml ]; then
+		modifyrepo_c updateinfo.xml repodata/
+		rc=$?
+		if [ $rc -ne 0 ]; then
+			echo "modifyrepo_c updateinfo.xml repodata/ failed [EC=$rc]"
+			exit $rc
+		fi
+		/bin/rm -f updateinfo.xml
+	else
+		echo "unable to find uncompressed updateinfo.xml file"
+		exit $rc
+	fi
+else
+	: echo "unable to find a suitable updateinfo.xml file. skipping"
+fi
+
+if [ -n "${MODULES}" ]; then
+	gunzip -c ${MODULES} >modules.yaml
+	rc=$?
+	if [ -f modules.yaml ]; then
+		modifyrepo_c modules.yaml repodata/
+		rc=$?
+		if [ $rc -ne 0 ]; then
+			echo "modifyrepo_c modules.yaml repodata/ failed [EC=$rc]"
+			exit $rc
+		fi
+		/bin/rm -f modules.yaml
+	else
+		echo "unable to find uncompressed modules.yaml file"
+		exit $rc
+	fi
+else
+	: echo "unable to find a suitable modules.yaml file. skipping"
+fi
+
+# Cleanup old updateinfo.xml and all but the latest *updateinfo.xml.gz files
+for FILE in $(/bin/ls -t *updateinfo.xml.gz 2>/dev/null | tail -n +2); do
+	/bin/rm -fv $FILE || exit $?
+done
+[ -f updateinfo.xml ] && /bin/rm -f updateinfo.xml
+
+# Cleanup any old *modules.yaml.gz files
+for FILE in $(/bin/ls -t *modules.yaml.gz 2>/dev/null | tail -n +2); do
+	/bin/rm -fv $FILE || exit $?
+done
+[ -f modules.yaml ] && /bin/rm -f modules.yaml
+
+exit $rc

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -x ~/bin/doOL7reposync ] && [ -x ~/bin/doOL8reposync ]; then
+	doOL7reposync || exit $?
+	doOL8reposync || exit $?
+
+	cd /data/software/oracle/linux/repo/OracleLinux/
+	for DIR in $(find OL* -type d -name 'x86_64' | sort); do
+		pushd $DIR >/dev/null 2>&1 && \
+			updateRepodata
+		popd >/dev/null
+	done
+fi

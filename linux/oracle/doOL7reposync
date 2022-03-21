@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+_reposync()
+{
+	/bin/reposync --gpgcheck -d -t --downloadcomps --download-metadata --norepopath $@
+	return $?
+}
+
+BASEDIR=/data/software
+
+_reposync --repoid=upstream-ol7_latest          --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/latest/x86_64
+_reposync --repoid=upstream-ol7_optional_latest --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/optional/latest/x86_64
+_reposync --repoid=upstream-ol7_addons          --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/addons/x86_64
+
+_reposync --repoid=upstream-ol7_UEKR4  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/UEKR4/x86_64
+_reposync --repoid=upstream-ol7_UEKR5  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/UEKR5/x86_64
+_reposync --repoid=upstream-ol7_UEKR6  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/UEKR6/x86_64
+
+_reposync --repoid=upstream-ol7_developer_EPEL                  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/developer_EPEL/x86_64
+_reposync --repoid=upstream-ol7_oracle-linux-manager210_server  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/oraclelinuxmanager210/server/x86_64
+_reposync --repoid=upstream-ol7_oracle-linux-manager210_client  --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/oraclelinuxmanager210/client/x86_64
+_reposync --repoid=upstream-ol7_software_collections            --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/SoftwareCollections/x86_64
+
+_reposync --repoid=upstream-ol7_kvm_utils --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL7/kvm/utils/x86_64
