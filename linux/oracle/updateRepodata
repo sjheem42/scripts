@@ -52,6 +52,11 @@ else
 	: echo "unable to find a suitable modules.yaml file. skipping"
 fi
 
+# Cleanup any old *comps.xml.gz files
+for FILE in $(/bin/ls -t *comps.xml.gz 2>/dev/null | tail -n +2); do
+        /bin/rm -fv $FILE || exit $?
+done
+
 # Cleanup old updateinfo.xml and all but the latest *updateinfo.xml.gz files
 for FILE in $(/bin/ls -t *updateinfo.xml.gz 2>/dev/null | tail -n +2); do
 	/bin/rm -fv $FILE || exit $?
