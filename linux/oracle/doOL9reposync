@@ -19,7 +19,7 @@ _reposync --repoid=upstream-ol9_developer --download_path=${BASEDIR}/oracle/linu
 _reposync --repoid=upstream-ol9_developer_EPEL --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/developer/EPEL/$basearch
 _reposync --repoid=upstream-ol9_developer_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/developer/UEKR7/$basearch
 
-_reposync --repoid=upstream-ol9_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/UEKR6/$basearch
+_reposync --repoid=upstream-ol9_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/UEKR7/$basearch
 _reposync --repoid=upstream-ol9_RDMA --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/RDMA/$basearch
 
 _reposync --repoid=upstream-ol9_kvm_utils --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/kvm/utils/$basearch
