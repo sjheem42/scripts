@@ -1,0 +1,58 @@
+#!/bin/bash -e
+
+_reposync()
+{
+	/bin/reposync --gpgcheck -d -t --downloadcomps --download-metadata --norepopath $@
+	return $?
+}
+
+BASEDIR=/data/software
+basearch="x86_64"
+
+_reposync --repoid=upstream-ol9_baseos_latest --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/baseos/latest/$basearch
+_reposync --repoid=upstream-ol9_appstream --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/appstream/$basearch
+_reposync --repoid=upstream-ol9_addons --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/addons/$basearch
+
+_reposync --repoid=upstream-ol9_oraclelinuxmanager210_client --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/oraclelinuxmanager210/client/$basearch
+
+_reposync --repoid=upstream-ol9_developer --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/developer/$basearch
+_reposync --repoid=upstream-ol9_developer_EPEL --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/developer/EPEL/$basearch
+_reposync --repoid=upstream-ol9_developer_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/developer/UEKR7/$basearch
+
+_reposync --repoid=upstream-ol9_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/UEKR6/$basearch
+_reposync --repoid=upstream-ol9_RDMA --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/RDMA/$basearch
+
+_reposync --repoid=upstream-ol9_kvm_utils --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/kvm/utils/$basearch
+
+_reposync --repoid=upstream-ol9_codeready_builder --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL9/codeready/builder/$basearch
+
+exit $?
+
+#[upstream-ol9_developer_EPEL]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/developer/EPEL/$basearch/
+#[upstream-ol9_developer]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/developer/$basearch/
+#[upstream-ol9_developer_UEKR7]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/developer/UEKR7/$basearch/
+#[upstream-ol9_oraclelinuxmanager210_client]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/oraclelinuxmanager210/client/$basearch/
+#[upstream-ol9_baseos_latest]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/baseos/latest/$basearch/
+#[upstream-ol9_appstream]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/appstream/$basearch/
+#[upstream-ol9_u0_baseos_base]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/0/baseos/base/$basearch/
+#[upstream-ol9_addons]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/addons/$basearch/
+#[upstream-ol9_codeready_builder]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/codeready/builder/$basearch/
+#[upstream-ol9_distro_builder]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/distro/builder/$basearch/
+#[upstream-ol9_MODRHCK]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/MODRHCK/$basearch/
+#[upstream-ol9_UEKR7]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/UEKR7/$basearch/
+#[upstream-ol9_RDMA]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/RDMA/$basearch/
+#[upstream-ol9_kvm_utils]
+#baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/kvm/utils/$basearch/
