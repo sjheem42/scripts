@@ -1,0 +1,14 @@
+[upstream-ol9_developer]
+name = Oracle Linux 9 Development Packages ($basearch)
+baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/developer/$basearch/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle-ol9
+gpgcheck = 1
+enabled = 0
+
+[upstream-ol9_developer_UEKR7]
+name = Developer Preview of UEK Release 7 ($basearch)
+baseurl = https://yum$ociregion.$ocidomain/repo/OracleLinux/OL9/developer/UEKR7/$basearch/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle-ol9
+gpgcheck = 1
+enabled = 0
+
