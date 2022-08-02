@@ -1,0 +1,13 @@
+[upstream-ol7_oracle-linux-manager210_server]
+name = Oracle Linux Manager Server 2.10 for Oracle Linux 7 ($basearch)
+baseurl = https://yum.oracle.com/repo/OracleLinux/OL7/oraclelinuxmanager210/server/$basearch/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ol7
+gpgcheck = 1
+enabled = 0
+
+[upstream-ol7_oracle-linux-manager210_client]
+name = Oracle Linux Manager Client 2.10 for Oracle Linux 7 ($basearch)
+baseurl = https://yum.oracle.com/repo/OracleLinux/OL7/oraclelinuxmanager210/client/$basearch/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ol7
+gpgcheck = 1
+enabled = 0

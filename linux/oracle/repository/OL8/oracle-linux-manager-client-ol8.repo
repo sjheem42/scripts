@@ -1,0 +1,6 @@
+[upstream-ol8_oraclelinuxmanager210_client]
+name = Oracle Linux Manager Client 2.10 for Oracle Linux 8 ($basearch)
+baseurl = https://yum.oracle.com/repo/OracleLinux/OL8/oraclelinuxmanager210/client/$basearch/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ol8
+gpgcheck = 1
+enabled = 0
