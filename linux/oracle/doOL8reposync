@@ -18,7 +18,9 @@ _reposync --repoid=upstream-ol8_developer --download_path=${BASEDIR}/oracle/linu
 _reposync --repoid=upstream-ol8_developer_EPEL --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/developer/EPEL/x86_64
 
 _reposync --repoid=upstream-ol8_UEKR6 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR6/x86_64
+_reposync --repoid=upstream-ol8_UEKR7 --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR7/x86_64
 _reposync --repoid=upstream-ol8_UEKR6_RDMA --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR6/RDMA/x86_64
+_reposync --repoid=upstream-ol8_UEKR7_RDMA --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/UEKR7/RDMA/x86_64
 
 _reposync --repoid=upstream-ol8_kvm_appstream --download_path=${BASEDIR}/oracle/linux/repo/OracleLinux/OL8/kvm/appstream/x86_64
 
